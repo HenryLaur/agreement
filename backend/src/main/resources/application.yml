@@ -1,0 +1,11 @@
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5432/agreement
+        username: postgres
+        password: root
+    liquibase:
+        change-log: classpath:config/liquibase/db.changelog-master.xml
+
+server:
+    error:
+        include-message: always

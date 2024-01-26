@@ -1,0 +1,24 @@
+<form #form="ngForm" class="card p-3 shadow" (ngSubmit)="save()" *ngIf="sectors.length">
+    <h2 class="text-center">Please enter your name and pick the Sectors you are currently involved in.</h2>
+    <div *ngIf="error" class="card bg-danger-subtle p-3 mb-3">
+        <h3 class="m-0">Error saving agreement</h3>
+    </div>
+
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="agreement.name" name="name" required />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Sectors</mat-label>
+        <mat-select multiple [(ngModel)]="agreement.sectors" class="w-100" name="sectors" [compareWith]="compareSectors" required>
+            <mat-option *ngFor="let sector of sectors" [value]="sector" [style]="'padding-left: ' + sector.level + 'rem'">{{
+                sector.name
+            }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-checkbox [(ngModel)]="agreement.isAgreed" name="agreeTerms" required> Agree to terms </mat-checkbox>
+
+    <button class="mt-3" mat-raised-button color="primary" type="submit" [disabled]="!form.valid || loading">Save</button>
+</form>

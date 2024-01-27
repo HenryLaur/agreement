@@ -5,12 +5,12 @@ Database generated with following jdl
 
 ``` jdl
 entity Agreement {
-	name String required
+    name String required
     isAgreed Boolean required
 }
 
 entity Sector {
-	code String required
+    code String required
     name String required
 }
 
@@ -19,7 +19,7 @@ relationship ManyToMany {
 }
 
 relationship OneToMany {
-	Sector{children} to Sector{parent}
+    Sector{children} to Sector{parent}
 }
 ```
 
